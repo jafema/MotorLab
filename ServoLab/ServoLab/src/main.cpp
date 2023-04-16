@@ -11,22 +11,18 @@ void setServos(int degrees) {
 
 void setup() {
     Serial.begin(115200);
-
-    for(int i = 0; i < 5; ++i) {
-        if(!servos.attach(servosPins)) {
-            Serial.print("Servo ");
-            Serial.print(i);
-            Serial.println("attach error");
-        }
-    }
+    if(!servos.attach(servosPins)) {
+        Serial.print("Servo attach error.");
+    }    
 }
 
 void loop() {
-/*     for(int posDegrees = 0; posDegrees <= 180; posDegrees++) {
+    for(int posDegrees = 0; posDegrees <= 180; posDegrees++) {
         setServos(posDegrees);
         Serial.println(posDegrees);
         delay(5);
-    } */
+    }
+    delay(500);
     setServos(90);
     Serial.println(90);
     delay(1000);
